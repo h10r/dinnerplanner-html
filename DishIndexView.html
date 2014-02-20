@@ -48,12 +48,9 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3 sidebar">
-          <div class="sidebar-module sidebar-module-inset" ng-controller="SidebarController">
+          <div class="sidebar-module sidebar-module-inset" ng-controller="DishController">
             <h4>My Dinner</h4>
             <p>Number of Guests <span class="pull-right">
-              <div ng-repeat="n in [] | range:10">
-                do something number {{$index}}
-              </div>
             </p>
 
             <p>Dish Name <span class="pull-right">Cost</span></p>
@@ -95,8 +92,15 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+
     <!-- Include angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+
+    <!-- The application JavaScript code -->
+    <script src="js/app.js"></script>
+    <script src="js/services/dinnerModel.js"></script>
+    <script src="js/controllers/dishViewController.js"></script>
+
+    <!-- Include angular -->
   </body>
 </html>
