@@ -53,6 +53,12 @@ body {
   width: 1200px;
   height: 800px;
   
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  filter: blur(4px);
+
   -webkit-animation: image_blur 4.2s; 
 }
 
