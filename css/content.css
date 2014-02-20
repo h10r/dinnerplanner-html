@@ -10,3 +10,15 @@ body {
 	padding-right: 5px;
 	border-right: 1px solid black;
 }
+
+.navbar .navbar-brand {
+	font-weight: bold;
+	color: white;
+}
+
+.navbar span.tagline {
+	color: #2ecc71;
+	font-style: italic;
+	display: block;
+	padding-top: 17px;
+}
