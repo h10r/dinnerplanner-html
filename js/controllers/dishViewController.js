@@ -7,43 +7,10 @@
 // to the model.
 window.app.controller("DishController", function($scope, DinnerModel) {
 
-	// Store all the shapes in scope object field so
-	// we can iterate over it in the view
-	// $scope.shapes = DinnerModel.getShapes()
-	// We associate the Math object with the scope
-	// so we can use it in the view for transformations
-	// $scope.Math = window.Math;
-	
-	var newShape;
-	var mouse = {}
+	$scope.dishesOnDisplay = DinnerModel.getAllDishes("starter");
 
-	// Function to start drawing the new shape. We will
-	// associate it to the mouse down event on the SVG.
-	$scope.startDrawShape = function(e) {
-		if($scope.activeShape) {
-			newShape = {x:e.offsetX, y:e.offsetY,h:1,w:1, type:$scope.activeShape};
-			mouse.startDragX = e.offsetX;
-			mouse.startDragY = e.offsetY;
-			DinnerModel.addShape(newShape);
-		}
-	};
-
-	// Function to stop drawing the shape. We will
-	// associate it with the mouse up event on the SVG.
-	$scope.stopDrawShape = function(e) {
-		newShape = null;
-	};
-
-	// Function to update the currently drawn shape. We
-	// will associate it with the mouse move event on the SVG.
-	$scope.updateDrawShape = function(e) {
-		if(newShape) {
-			DinnerModel.updateShape(newShape,
-				mouse.startDragX,
-				mouse.startDragY,
-				e.offsetY - mouse.startDragY,
-				e.offsetX - mouse.startDragX);
-		}
+	$scope.changeDishesOnDisplayTo = function (type) {
+		$scope.dishesOnDisplay = DinnerModel.getAllDishes(type);
 	};
 
 });

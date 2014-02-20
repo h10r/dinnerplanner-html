@@ -344,6 +344,9 @@ window.app.service("DinnerModel", function() {
 					return dishes[key];
 				}
 			}
+		},
+
+		getSelectedDishes : function (type) {
 		}
 	}
 });
