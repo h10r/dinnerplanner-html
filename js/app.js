@@ -6,6 +6,6 @@ $(function() {
 	var model = new DinnerModel();
 	
 	//And create the needed controllers and views
-	var exampleView = new ExampleView($("#exampleView"),model);
-   	var exampleViewController = new ExampleViewController(exampleView,model);
+	var dishView = new DishView($("#dishView"),model);
+   	var dishViewController = new DishController(dishView,model);
 });
