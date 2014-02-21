@@ -1,6 +1,7 @@
 body {
   padding-top: 50px;
 }
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
@@ -21,4 +22,38 @@ body {
 	font-style: italic;
 	display: block;
 	padding-top: 17px;
+}
+
+#dishes {
+	margin-top: 20px;
+}
+
+#dishes .dish {
+	width: 19%;
+	margin-right: 1%;
+	float: left;
+}
+
+#dishes .dish img {
+	height: auto;
+	width: 100%;
+}
+
+#dishes .dish span {
+}
+
+#dishes .dish .dish-image-and-name {
+	height: 220px;
+	padding: 2px;
+	border: 1px solid black;
+}
+
+#dishes .dish .dish-name {
+	background: #eee;
+	font-weight: bold;
+	font-size: 22px;
+}
+
+#dishes .dish .dish-description {
+	font-size: 12px;
 }
