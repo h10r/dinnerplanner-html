@@ -13,4 +13,10 @@ window.app.controller("DishController", function($scope, DinnerModel) {
 		$scope.dishesOnDisplay = DinnerModel.getAllDishes(type);
 	};
 
+	// Function to set the selected shape 
+	$scope.setSelectedDish = function (newDish) {
+		console.log( newDish );
+		DinnerModel.addDishToMenu(newDish.id);
+	};
+
 });

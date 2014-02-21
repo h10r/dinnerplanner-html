@@ -72,16 +72,21 @@
           </div>
         </div><!-- /.sidebar -->
 
-        <div class="col-sm-6 main">
-          <div id="dishes">
+        <div class="col-sm-9 main">
+          <div id="dishes" >
 
             <div class="dish" ng-repeat="d in dishesOnDisplay">
-                  <span class="dish-image">
-                    <img src="images/{{d.image}}" />
-                  </span>
-
-                  {{d.name}}
-                  {{d.type}}
+                  <div class="dish-image-and-name" ng-click="setSelectedDish(d)">
+                    <div class="dish-image">
+                      <img src="images/{{d.image}}" />
+                    </div>
+                    <div class="dish-name">
+                      {{d.name}}
+                    </div>
+                  </div>
+                  <div class="dish-description">
+                    {{d.description}}
+                  </div>
             </div>
           </div>
         </div><!-- /.main -->
