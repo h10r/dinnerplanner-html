@@ -54,15 +54,15 @@
             </p>
 
             <p>Dish Name <span class="pull-right">Cost</span></p>
-            <ul class="">
+            <ul class="menu">
 
-              <li class="animate-repeat" ng-repeat="dish in selectedDishes | filter:q">
-                {{dish.name}}<span class="pull-right">{{dish.price}}</span>
-              </li>
-
-              <li><a href="#">Pizza</a></li>
-              <li><a href="#">Pizza</a></li>
+              <div class="dish" ng-repeat="d in dishesSelected">
+                    <p>{{d.name}} <span class="pull-right">SEK {{getDishPrice(d)}}
+                      <a class="menu-delete" ng-click="removeDish(d)">X</a>
+                    </span></p>
+              </div>
             </ul>
+
             <p>SEK <span class="total-cost">77.20</span></p>
             <p>
               <button type="button" class="btn btn-default">
@@ -75,8 +75,9 @@
         <div class="col-sm-9 main">
           <div id="dishes" >
 
+            
             <div class="dish" ng-repeat="d in dishesOnDisplay">
-                  <div class="dish-image-and-name" ng-click="setSelectedDish(d)">
+                  <div class="dish-image-and-name" ng-click="selectDish(d)">
                     <div class="dish-image">
                       <img src="images/{{d.image}}" />
                     </div>

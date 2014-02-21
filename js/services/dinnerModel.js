@@ -346,7 +346,17 @@ window.app.service("DinnerModel", function() {
 			}
 		},
 
-		getSelectedDishes : function (type) {
+		getPriceOfDish : function (id) {
+			var sum = 0.0;
+
+			var dish = this.getDish( id );
+			ingredients = ingredients.concat(dish.ingredients);
+
+			for(key in ingredients) {
+				sum += parseFloat(ingredients[key].price);
+			}
+
+			return sum;
 		}
 	}
 });

@@ -8,15 +8,23 @@
 window.app.controller("DishController", function($scope, DinnerModel) {
 
 	$scope.dishesOnDisplay = DinnerModel.getAllDishes("starter");
+	$scope.dishesSelected = DinnerModel.getFullMenu();
 
 	$scope.changeDishesOnDisplayTo = function (type) {
 		$scope.dishesOnDisplay = DinnerModel.getAllDishes(type);
 	};
 
 	// Function to set the selected shape 
-	$scope.setSelectedDish = function (newDish) {
-		console.log( newDish );
-		DinnerModel.addDishToMenu(newDish.id);
+	$scope.selectDish = function (newDish) {
+		DinnerModel.addDishToMenu( newDish.id );
+	};
+
+	$scope.removeDish = function (newDish) {
+		DinnerModel.removeDishFromMenu( newDish.id );
+	};
+
+	$scope.getDishPrice = function (dish) {
+		return DinnerModel.getPriceOfDish( dish.id );
 	};
 
 });
