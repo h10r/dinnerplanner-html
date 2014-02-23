@@ -7,20 +7,29 @@
 // to the model.
 window.app.controller("DishController", function($scope, DinnerModel) {
 
-	$scope.dishesOnDisplay = DinnerModel.getAllDishes("starter");
+	$scope.typeOnDisplay = "starter";
+	$scope.dishesOnDisplay = DinnerModel.getAllDishes( $scope.typeOnDisplay );
+	
+	$scope.dishTypes = DinnerModel.getDishTypes();
 	$scope.dishesSelected = DinnerModel.getFullMenu();
 
 	$scope.changeDishesOnDisplayTo = function (type) {
+		$scope.typeOnDisplay = type;
+		
 		$scope.dishesOnDisplay = DinnerModel.getAllDishes(type);
 	};
 
 	// Function to set the selected shape 
 	$scope.selectDish = function (newDish) {
 		DinnerModel.addDishToMenu( newDish.id );
+
+		$scope.dishesSelected = DinnerModel.getFullMenu();
 	};
 
 	$scope.removeDish = function (newDish) {
 		DinnerModel.removeDishFromMenu( newDish.id );
+
+		$scope.dishesSelected = DinnerModel.getFullMenu();
 	};
 
 	$scope.getDishPrice = function (dish) {

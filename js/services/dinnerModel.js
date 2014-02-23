@@ -9,6 +9,14 @@ window.app.service("DinnerModel", function() {
 	// defining the unit i.e. "g", "slices", "ml". Unit
 	// can sometimes be empty like in the example of eggs where
 	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
+	var dishTypes = [{
+		"value":"starter", 
+		"caption":"Starter" },{
+		"value":"main dish", 
+		"caption":"Main Dish" },{
+		"value":"dessert", 
+		"caption":"Dessert" }];
+
 	var dishes = [{
 		'id':1,
 		'name':'French toast',
@@ -265,6 +273,10 @@ window.app.service("DinnerModel", function() {
 
 		getNumberOfGuests : function() {
 			return parseInt(numberOfGuests);
+		},
+
+		getDishTypes : function() {
+			return dishTypes;
 		},
 
 		//Returns the dish that is on the menu for selected type 

@@ -73,9 +73,16 @@
         </div><!-- /.sidebar -->
 
         <div class="col-sm-9 main">
-          <div id="dishes" >
+          <div id="controls">
+            <span>Switch Category: </span>
+              <button class="control" ng-repeat="d in dishTypes" ng-click="changeDishesOnDisplayTo(d.value)">
+                {{d.caption}}
+              </button>
+          </div>
 
-            
+          <h3>{{typeOnDisplay}}</h3>
+
+          <div id="dishes">
             <div class="dish" ng-repeat="d in dishesOnDisplay">
                   <div class="dish-image-and-name" ng-click="selectDish(d)">
                     <div class="dish-image">
