@@ -49,10 +49,10 @@
       <div class="row">
         <div class="col-sm-3 sidebar">
           <div class="sidebar-module sidebar-module-inset" >
-            <h4>My Dinner</h4>
+            <h4>My Dinner for {{numberOfGuests}} guests</h4>
             <p>Number of Guests <span class="pull-right">
               <form name="guestForm">
-                <input name="numberOfGuests" type="text" ng-model="n" ng-change="setNumberOfGuests(n)" />
+                <input name="numberOfGuests" type="text" ng-model="n" value="{{numberOfGuests}}" ng-change="setNumberOfGuests(n)" />
               </form>
             </p>
 

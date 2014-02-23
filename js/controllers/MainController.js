@@ -13,6 +13,7 @@ window.app.controller("MainController", function($scope, DinnerModel) {
 	$scope.dishTypes = DinnerModel.getDishTypes();
 	$scope.dishesSelected = DinnerModel.getFullMenu();
 	
+	$scope.numberOfGuests = DinnerModel.getNumberOfGuests();
 	$scope.totalPrice = DinnerModel.getTotalMenuPrice();
 
 	$scope.changeDishesOnDisplayTo = function (type) {
@@ -47,6 +48,7 @@ window.app.controller("MainController", function($scope, DinnerModel) {
 	$scope.updateDisplay = function () {
 		$scope.dishesSelected = DinnerModel.getFullMenu();
 		$scope.totalPrice = DinnerModel.getTotalMenuPrice();
+		$scope.numberOfGuests = DinnerModel.getNumberOfGuests();
 	};	
 
 	$scope.getDishPrice = function (dish) {
