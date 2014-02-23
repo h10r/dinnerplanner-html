@@ -12,25 +12,43 @@ window.app.controller("DishController", function($scope, DinnerModel) {
 	
 	$scope.dishTypes = DinnerModel.getDishTypes();
 	$scope.dishesSelected = DinnerModel.getFullMenu();
+	
+	$scope.totalPrice = DinnerModel.getTotalMenuPrice();
 
 	$scope.changeDishesOnDisplayTo = function (type) {
 		$scope.typeOnDisplay = type;
-		
+
 		$scope.dishesOnDisplay = DinnerModel.getAllDishes(type);
+	};
+
+	$scope.setNumberOfGuests = function ( n ) {
+		var number = parseInt( n );
+
+		if ( number > 0 ) {
+			console.log( number );
+			DinnerModel.setNumberOfGuests( number );
+
+			$scope.updateDisplay();
+		}
 	};
 
 	// Function to set the selected shape 
 	$scope.selectDish = function (newDish) {
 		DinnerModel.addDishToMenu( newDish.id );
 
-		$scope.dishesSelected = DinnerModel.getFullMenu();
+		$scope.updateDisplay();
 	};
 
 	$scope.removeDish = function (newDish) {
 		DinnerModel.removeDishFromMenu( newDish.id );
 
-		$scope.dishesSelected = DinnerModel.getFullMenu();
+		$scope.updateDisplay();
 	};
+
+	$scope.updateDisplay = function () {
+		$scope.dishesSelected = DinnerModel.getFullMenu();
+		$scope.totalPrice = DinnerModel.getTotalMenuPrice();
+	};	
 
 	$scope.getDishPrice = function (dish) {
 		return DinnerModel.getPriceOfDish( dish.id );

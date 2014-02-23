@@ -51,6 +51,9 @@
           <div class="sidebar-module sidebar-module-inset" >
             <h4>My Dinner</h4>
             <p>Number of Guests <span class="pull-right">
+              <form name="guestForm">
+                <input name="numberOfGuests" type="text" ng-model="n" ng-change="setNumberOfGuests(n)" />
+              </form>
             </p>
 
             <p>Dish Name <span class="pull-right">Cost</span></p>
@@ -63,7 +66,7 @@
               </div>
             </ul>
 
-            <p>SEK <span class="total-cost">77.20</span></p>
+            <p>SEK <span class="total-cost">{{ totalPrice }}</span></p>
             <p>
               <button type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-star"></span> Confirm dinner
