@@ -1,5 +1,5 @@
 
-window.app.controller("DishController", function($scope, $rootScope, DinnerModel) {
+window.app.controller("PreparationController", function($scope, $rootScope, DinnerModel) {
 
 	$scope.currentDishId = 1;
 

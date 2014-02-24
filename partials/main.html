@@ -1,0 +1,37 @@
+<div class="col-sm-3 sidebar" ng-include="sidebar.html"></div>
+
+<div class="col-sm-9 main">
+
+  <ul id="controls" class="nav nav-tabs">
+
+    <li ng-repeat="d in dishTypes" ng-click="changeDishesOnDisplayTo(d.value)">
+      <a href="#">{{d.caption}}</a>
+    </li>
+  </ul>
+
+
+  <!--<div id="controls">
+    <span>Switch Category: </span>
+      <button class="control" ng-repeat="d in dishTypes" ng-click="changeDishesOnDisplayTo(d.value)">
+        {{d.caption}}
+      </button>
+  </div>-->
+
+  <h3>{{typeOnDisplay}}</h3>
+
+  <div id="dishes">
+    <div class="dish" ng-repeat="d in dishesOnDisplay">
+          <div class="dish-image-and-name" ng-click="showDish(d)">
+            <div class="dish-image">
+              <img src="images/{{d.image}}" />
+            </div>
+            <div class="dish-name">
+              {{d.name}}
+            </div>
+          </div>
+          <div class="dish-description">
+            {{d.description}}
+          </div>
+    </div>
+  </div>
+</div><!-- /.main -->
