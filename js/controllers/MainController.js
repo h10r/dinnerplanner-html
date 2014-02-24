@@ -16,6 +16,17 @@ window.app.controller("MainController", function($scope, $rootScope, DinnerModel
 	$scope.numberOfGuests = DinnerModel.getNumberOfGuests();
 	$scope.totalPrice = DinnerModel.getTotalMenuPrice();
 
+	//
+	// Event Listener	
+	//
+	var selectDishEventListener = $rootScope.$on('dishModelChanged', 
+		function(event) { 
+			$scope.updateDisplay();
+		}
+	);
+
+	//
+
 	$scope.changeDishesOnDisplayTo = function (type) {
 		$scope.typeOnDisplay = type;
 
@@ -30,13 +41,6 @@ window.app.controller("MainController", function($scope, $rootScope, DinnerModel
 
 			$scope.updateDisplay();
 		}
-	};
-
-	// Function to set the selected shape 
-	$scope.selectDish = function (newDish) {
-		DinnerModel.addDishToMenu( newDish.id );
-
-		$scope.updateDisplay();
 	};
 
 	$scope.removeDish = function (newDish) {
@@ -58,5 +62,6 @@ window.app.controller("MainController", function($scope, $rootScope, DinnerModel
 	$scope.showDish = function (dish) {
 		$rootScope.$emit('renderDishController', dish.id);
 	};
+
 
 });

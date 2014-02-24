@@ -7,27 +7,42 @@
 // to the model.
 window.app.controller("DishController", function($scope, $rootScope, DinnerModel) {
 
-	$scope.currentDish = DinnerModel.getDish( 1 );
-	$scope.priceOfCurrentDish = DinnerModel.getPriceOfDish( 1 );
+	$scope.currentDishId = 1;
 
 	$scope.numberOfGuests = DinnerModel.getNumberOfGuests();
 
-	// show dish
+	//
+	// Event Listener	
+	//
 	var showDishEventListener = $rootScope.$on('renderDishController', 
 		function(event, dishId) { 
 			$scope.showDish( dishId );
 		}
 	);
 
+	//
+
 	$scope.showDish = function (dishId) {
-		$scope.currentDish = DinnerModel.getDish( dishId );
-		$scope.priceOfCurrentDish = DinnerModel.getPriceOfDish( dishId );
+		$scope.currentDishId = dishId;
+
+		$scope.updateDisplay();
 
 		$("#DishControllerView").modal();
 	};
 
 	$scope.confirmDish = function() {
-		console.log( "dish confirmed" );
+		DinnerModel.addDishToMenu( $scope.currentDishId );
+
+		$rootScope.$emit('dishModelChanged');
+		
+		$("#DishControllerView").modal("hide");
+	};
+
+	$scope.updateDisplay = function () {
+		$scope.numberOfGuests = DinnerModel.getNumberOfGuests();
+		
+		$scope.currentDish = DinnerModel.getDish( $scope.currentDishId );
+		$scope.priceOfCurrentDish = DinnerModel.getPriceOfDish( $scope.currentDishId );
 	};
 
 });
