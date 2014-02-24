@@ -57,3 +57,7 @@ body {
 #dishes .dish .dish-description {
 	font-size: 12px;
 }
+
+.modal-content {
+	padding: 20px;
+}

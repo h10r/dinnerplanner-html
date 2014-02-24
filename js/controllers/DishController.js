@@ -22,6 +22,8 @@ window.app.controller("DishController", function($scope, $rootScope, DinnerModel
 	$scope.showDish = function (dishId) {
 		$scope.currentDish = DinnerModel.getDish( dishId );
 		$scope.priceOfCurrentDish = DinnerModel.getPriceOfDish( dishId );
+
+		$("#DishControllerView").modal();
 	};
 
 	$scope.confirmDish = function() {
