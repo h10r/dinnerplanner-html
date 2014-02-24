@@ -45,6 +45,31 @@
       </div>
     </div>
 
+    <div class="container" ng-controller="DishController">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>{{ currentDish.name }}</h2>
+          
+          <span class="pull-left"><img src="images/{{ currentDish.image }}" /></span>
+
+          {{ currentDish.description }}
+        </div>
+        <div class="col-sm-6">
+          <h3>Ingredients for {{ numberOfGuests }} people</h3>
+          
+          <div id="ingredients">
+            <div class="ingredient" ng-repeat="i in currentDish.ingredients">
+              {{i.quantity}} {{i.unit}} {{i.name}} <span class="pull-right">SEK {{i.price}}</span>
+            </div>
+            <div class="total">
+              <button type="button" class="btn btn-default" ng-click="confirmDish()">
+                <span class="glyphicon glyphicon-star"></span> Confirm dish
+              </button>
+              <span class="pull-right">SEK {{priceOfCurrentDish}}</span>
+            </div>
+        </div>
+    </div>
+
     <div class="container" ng-controller="MainController">
       <div class="row">
         <div class="col-sm-3 sidebar">
@@ -87,7 +112,7 @@
 
           <div id="dishes">
             <div class="dish" ng-repeat="d in dishesOnDisplay">
-                  <div class="dish-image-and-name" ng-click="selectDish(d)">
+                  <div class="dish-image-and-name" ng-click="showDish(d)">
                     <div class="dish-image">
                       <img src="images/{{d.image}}" />
                     </div>
