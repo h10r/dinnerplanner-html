@@ -76,6 +76,41 @@
   </div>
 </div>
 
+<div id="OverviewControllerView" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" ng-controller="OverviewController">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+    
+          <h2>My Dinner for {{ numberOfGuests }} people</h2>
+
+          <div id="dishes">
+            <div class="dish" ng-repeat="d in fullMenu">
+              <div class="dish-image-and-name" ng-click="showDish(d)">
+                <div class="dish-image">
+                  <img src="images/{{d.image}}" />
+                </div>
+                <div class="dish-name">
+                  {{d.name}}
+                </div>
+                <div class="dish-price">
+                  SEK {{getDishPrice(d)}}
+                </div>
+              </div>
+            </div>
+            
+            <div class="dish">
+              <h3>Total</h3>
+              <p>SEK {{totalPrice}}</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="container" ng-controller="MainController">
       <div class="row">
         <div class="col-sm-3 sidebar">
@@ -99,7 +134,7 @@
 
             <p>SEK <span class="total-cost">{{ totalPrice }}</span></p>
             <p>
-              <button type="button" class="btn btn-default">
+              <button type="button" class="btn btn-default" ng-click="showOverview()">
                 <span class="glyphicon glyphicon-star"></span> Confirm dinner
               </button>
             </p>          
@@ -162,6 +197,6 @@
     <script src="js/services/DinnerModel.js"></script>
     <script src="js/controllers/MainController.js"></script>
     <script src="js/controllers/DishController.js"></script>
-    
+    <script src="js/controllers/OverviewController.js"></script>
   </body>
 </html>

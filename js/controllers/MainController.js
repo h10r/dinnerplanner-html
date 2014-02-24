@@ -63,5 +63,9 @@ window.app.controller("MainController", function($scope, $rootScope, DinnerModel
 		$rootScope.$emit('renderDishController', dish.id);
 	};
 
+	$scope.showOverview = function () {
+		$rootScope.$emit('renderOverviewController');
+	};
+
 
 });
