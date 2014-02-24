@@ -1,5 +1,5 @@
 
-window.app.controller("MainController", function($scope, $rootScope, DinnerModel) {
+angular.module('dinnerPlannerPro.controllers', []).controller("MainController", function($scope, $rootScope, DinnerModel) {
 
 	$scope.typeOnDisplay = "starter";
 	$scope.dishesOnDisplay = DinnerModel.getAllDishes( $scope.typeOnDisplay );

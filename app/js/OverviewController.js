@@ -1,5 +1,5 @@
 
-window.app.controller("OverviewController", function($scope, $rootScope, DinnerModel) {
+angular.module('dinnerPlannerPro.controllers', []).controller("OverviewController", function($scope, $rootScope, DinnerModel) {
 
 	$scope.currentDishId = 1;
 
