@@ -5,52 +5,27 @@
 // define on the scope you can use directly in the view.
 // We also pass our DinnerModel service so we have the access
 // to the model.
-window.app.controller("DishController", function($scope, DinnerModel) {
+window.app.controller("DishController", function($scope, $rootScope, DinnerModel) {
 
-	$scope.typeOnDisplay = "starter";
-	$scope.dishesOnDisplay = DinnerModel.getAllDishes( $scope.typeOnDisplay );
-	
-	$scope.dishTypes = DinnerModel.getDishTypes();
-	$scope.dishesSelected = DinnerModel.getFullMenu();
-	
-	$scope.totalPrice = DinnerModel.getTotalMenuPrice();
+	$scope.currentDish = DinnerModel.getDish( 1 );
+	$scope.priceOfCurrentDish = DinnerModel.getPriceOfDish( 1 );
 
-	$scope.changeDishesOnDisplayTo = function (type) {
-		$scope.typeOnDisplay = type;
+	$scope.numberOfGuests = DinnerModel.getNumberOfGuests();
 
-		$scope.dishesOnDisplay = DinnerModel.getAllDishes(type);
-	};
-
-	$scope.setNumberOfGuests = function ( n ) {
-		var number = parseInt( n );
-
-		if ( number > 0 ) {
-			DinnerModel.setNumberOfGuests( number );
-
-			$scope.updateDisplay();
+	// show dish
+	var showDishEventListener = $rootScope.$on('renderDishController', 
+		function(event, dishId) { 
+			$scope.showDish( dishId );
 		}
+	);
+
+	$scope.showDish = function (dishId) {
+		$scope.currentDish = DinnerModel.getDish( dishId );
+		$scope.priceOfCurrentDish = DinnerModel.getPriceOfDish( dishId );
 	};
 
-	// Function to set the selected shape 
-	$scope.selectDish = function (newDish) {
-		DinnerModel.addDishToMenu( newDish.id );
-
-		$scope.updateDisplay();
-	};
-
-	$scope.removeDish = function (newDish) {
-		DinnerModel.removeDishFromMenu( newDish.id );
-
-		$scope.updateDisplay();
-	};
-
-	$scope.updateDisplay = function () {
-		$scope.dishesSelected = DinnerModel.getFullMenu();
-		$scope.totalPrice = DinnerModel.getTotalMenuPrice();
-	};	
-
-	$scope.getDishPrice = function (dish) {
-		return DinnerModel.getPriceOfDish( dish.id );
+	$scope.confirmDish = function() {
+		console.log( "dish confirmed" );
 	};
 
 });

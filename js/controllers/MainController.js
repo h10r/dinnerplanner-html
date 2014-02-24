@@ -5,7 +5,7 @@
 // define on the scope you can use directly in the view.
 // We also pass our DinnerModel service so we have the access
 // to the model.
-window.app.controller("MainController", function($scope, DinnerModel) {
+window.app.controller("MainController", function($scope, $rootScope, DinnerModel) {
 
 	$scope.typeOnDisplay = "starter";
 	$scope.dishesOnDisplay = DinnerModel.getAllDishes( $scope.typeOnDisplay );
@@ -53,6 +53,10 @@ window.app.controller("MainController", function($scope, DinnerModel) {
 
 	$scope.getDishPrice = function (dish) {
 		return DinnerModel.getPriceOfDish( dish.id );
+	};
+
+	$scope.showDish = function (dish) {
+		$rootScope.$emit('renderDishController', dish.id);
 	};
 
 });
