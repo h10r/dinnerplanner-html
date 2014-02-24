@@ -76,12 +76,21 @@
         </div><!-- /.sidebar -->
 
         <div class="col-sm-9 main">
-          <div id="controls">
+
+          <ul id="controls" class="nav nav-tabs">
+
+            <li ng-repeat="d in dishTypes" ng-click="changeDishesOnDisplayTo(d.value)">
+              <a href="#">{{d.caption}}</a>
+            </li>
+          </ul>
+
+
+          <!--<div id="controls">
             <span>Switch Category: </span>
               <button class="control" ng-repeat="d in dishTypes" ng-click="changeDishesOnDisplayTo(d.value)">
                 {{d.caption}}
               </button>
-          </div>
+          </div>-->
 
           <h3>{{typeOnDisplay}}</h3>
 
@@ -104,7 +113,7 @@
       </div><!-- /.row -->
     </div><!-- /.container -->
 
-    <div class="footer">
+    <div class="footer col-md-12">
       <p>KTH iprog14, Group 13. Hendrik Heuer | Riasat Islam | Simon Kreiser | Shaun Mulligan</p>
     </div>
 
